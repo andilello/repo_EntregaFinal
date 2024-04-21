@@ -1,0 +1,36 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <main class="container">
+        <h1 class="text-xl-center title"> Entregables </h1>
+
+        <a href="alta_entregable" class="btn btn-primary btn-sm">Nuevo Entregable</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>título</th>
+                    <th>descripción</th>
+                    <th>fecha de entrega</th>
+                    <th>entregado</th>
+                </tr>            
+            </thead>
+            <tbody>
+                {% for e in entregables %}
+                <tr>
+                    <td>{{e.id}}</td>
+                    <td>{{e.titulo}}</td>
+                    <td>{{e.descripcion}}</td>
+                    <td>{{e.fecha_de_entrega}}</td>
+                    <td>{{e.entregado|yesno:"Sí,No"}}</td>
+                    <td><a href="{% url 'elimina_entregable' e.id %}" class="btn btn-danger btn-sm">BORRAR</a></td>
+                    <td><a href="{% url 'editar_entregable' e.id %}" class="btn btn-warning btn-sm">EDITAR</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <form action="alta_entregable" method="POST">
+        {% csrf_token %}
+        <p>Título:</p>
+        <input type="text" name="titulo" required>
+        <p>Descripción:</p>
+        <textarea name="descripcion" required></textarea>
+        <p>Fecha de entrega:</p>
+        <input type="date" name="fecha_de_entrega" required>
+        <p>Entregado:</p>
+        <select name="entregado">
+            <option value="False">No</option>
+            <option value="True">Sí</option>
+        </select>
+
+        <button>Enviar</button>
+    </form>
+{% endblock %}
